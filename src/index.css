@@ -1,0 +1,184 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font face for Aktiv Grotesk Extended (fallback to system fonts) */
+@font-face {
+  font-family: 'Aktiv Grotesk Extended';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Aktiv Grotesk Extended'), local('AktivGroteskExtended');
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk Extended';
+  font-weight: 700;
+  font-style: normal;
+  src: local('Aktiv Grotesk Extended Bold'), local('AktivGroteskExtended-Bold');
+}
+
+@layer base {
+  :root {
+    --aurma-deep: #000F1F;
+    --aurma-primary: #0A192F;
+    --aurma-secondary: #001F3F;
+    --aurma-border: #1E3A5F;
+    --aurma-gold: #D4AF37;
+    --aurma-gold-light: #E8C07B;
+    --aurma-text: #F5F6F5;
+    --aurma-text-muted: #A6A6A6;
+    --aurma-text-dim: #6B8299;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background-color: var(--aurma-deep);
+    color: var(--aurma-text);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Aktiv Grotesk Extended', 'Manrope', system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Primary Button (Gold Outline) */
+  .btn-primary {
+    @apply px-6 py-3 bg-transparent border-[1.5px] border-aurma-gold text-aurma-text font-medium rounded-lg;
+    @apply transition-all duration-300;
+    @apply hover:bg-aurma-gold/10 hover:shadow-aurma-gold;
+    @apply focus:outline-none focus:ring-2 focus:ring-aurma-gold-light/40;
+  }
+
+  /* Secondary Button (Dark Fill) */
+  .btn-secondary {
+    @apply px-6 py-3 bg-aurma-secondary border border-aurma-border text-aurma-text font-medium rounded-lg;
+    @apply transition-all duration-300;
+    @apply hover:bg-aurma-border/30;
+    @apply focus:outline-none focus:ring-2 focus:ring-aurma-border;
+  }
+
+  /* Card Component */
+  .card {
+    @apply bg-aurma-primary/80 border border-aurma-border/40 rounded-2xl p-6;
+    @apply transition-all duration-300;
+    @apply hover:translate-y-[-4px] hover:border-aurma-gold/30 hover:shadow-aurma;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply bg-aurma-primary border border-aurma-border/40 rounded-xl p-5;
+    @apply transition-all duration-300;
+  }
+
+  /* Gold Glow Effect */
+  .gold-glow {
+    @apply relative;
+  }
+  .gold-glow::before {
+    content: '';
+    @apply absolute inset-0 -z-10;
+    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+  }
+
+  /* Tech Badge */
+  .tech-badge {
+    @apply px-4 py-2 bg-transparent border border-aurma-border/60 rounded-full;
+    @apply text-sm text-aurma-text-muted font-medium;
+    @apply transition-all duration-300;
+    @apply hover:border-aurma-gold/40 hover:text-aurma-text;
+  }
+
+  /* Section styling */
+  .section {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Container */
+  .container-aurma {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-aurma-gold to-aurma-gold-light bg-clip-text text-transparent;
+  }
+
+  /* Animated border glow */
+  .border-glow {
+    position: relative;
+  }
+  .border-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--aurma-gold) 0%, transparent 50%, var(--aurma-gold) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .border-glow:hover::after {
+    opacity: 1;
+  }
+
+  /* Subtle grid pattern */
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(30, 58, 95, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 58, 95, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Mountain ridge decorative element */
+  .mountain-ridge {
+    background: linear-gradient(135deg, transparent 40%, var(--aurma-border) 40.5%, transparent 41%),
+                linear-gradient(225deg, transparent 40%, var(--aurma-border) 40.5%, transparent 41%);
+    background-size: 60px 30px;
+    opacity: 0.15;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--aurma-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--aurma-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--aurma-gold);
+}
