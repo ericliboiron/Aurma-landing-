@@ -1,5 +1,7 @@
 import Navigation from './components/Navigation'
 import Hero from './components/sections/Hero'
+import WhatIsAurma from './components/sections/WhatIsAurma'
+import Features from './components/sections/Features'
 import PlatformIntelligence from './components/sections/PlatformIntelligence'
 import MarketRegimes from './components/sections/MarketRegimes'
 import AdvancedAnalytics from './components/sections/AdvancedAnalytics'
@@ -14,6 +16,8 @@ function App() {
       <Navigation />
       <main>
         <Hero />
+        <WhatIsAurma />
+        <Features />
         <PlatformIntelligence />
         <MarketRegimes />
         <AdvancedAnalytics />
