@@ -1,58 +1,57 @@
-import { CheckIcon } from '../icons/Icons';
+import { CheckIcon, ArrowRightIcon } from '../icons/Icons';
 
 interface PricingTier {
   name: string;
+  tagline: string;
   description: string;
-  price: string;
-  period: string;
   features: string[];
   cta: string;
+  ctaLink: string;
   isPremium?: boolean;
 }
 
 const tiers: PricingTier[] = [
   {
-    name: 'Professional Trader',
-    description: 'For individual traders seeking institutional-grade tools',
-    price: '$199',
-    period: '/month',
+    name: 'Professional Trader Platform',
+    tagline: 'For traders and institutions requiring full control',
+    description: 'Complete access to all market data and analytics',
     features: [
-      'Full platform access',
-      'Real-time market data',
-      'Strategy backtesting',
-      'Basic analytics suite',
-      'Email support',
+      'Complete access to all market data and analytics',
+      'Strategy creation, testing, and deployment',
+      'Manual and automated execution',
+      'Advanced risk and intelligence tools',
+      'Real-time position monitoring',
     ],
-    cta: 'Get Started',
+    cta: 'Request Access',
+    ctaLink: '#access',
   },
   {
     name: 'AutoTrade Marketplace',
-    description: 'Automated execution of curated strategies',
-    price: '$499',
-    period: '/month',
+    tagline: 'For investors who want systematic performance without complexity',
+    description: 'Browse and deploy vetted trading strategies',
     features: [
-      'Everything in Professional',
-      'Automated trade execution',
-      'Strategy marketplace access',
-      'Advanced analytics suite',
-      'Priority support',
+      'Browse vetted trading strategies',
+      'Subscribe and deploy with one click',
+      'Fully automated execution via connected exchanges',
+      'Performance tracking and reporting',
+      'Strategy diversification tools',
     ],
-    cta: 'Start Trading',
+    cta: 'Explore Strategies',
+    ctaLink: '#strategies',
   },
   {
-    name: 'Managed Exposure (MGNS)',
-    description: 'White-glove portfolio management service',
-    price: 'Custom',
-    period: '',
+    name: 'Fully Managed Trading (MGNS)',
+    tagline: 'For investors seeking compliant, managed exposure',
+    description: 'Regulated security token under U.S. law',
     features: [
-      'Everything in AutoTrade',
-      'Dedicated portfolio manager',
-      'Custom strategy development',
-      'Institutional reporting',
-      '24/7 dedicated support',
-      'Direct API access',
+      'Regulated security token under U.S. law',
+      'Exposure linked to aurma liquidity and managed strategies',
+      'Diversified, programmatic risk management',
+      'Full access to the aurma platform included',
+      'Institutional-grade compliance and reporting',
     ],
-    cta: 'Contact Sales',
+    cta: 'Learn About MGNS',
+    ctaLink: '#mgns',
     isPremium: true,
   },
 ];
@@ -66,11 +65,14 @@ export default function Pricing() {
       <div className="container-aurma relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 text-xs font-medium text-aurma-gold uppercase tracking-wider bg-aurma-gold/10 border border-aurma-gold/20 rounded-full mb-4">
+            Access Options
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-aurma-text mb-4">
-            Choose Your Plan
+            Three Ways to Access aurma
           </h2>
           <p className="text-lg text-aurma-text-muted max-w-2xl mx-auto">
-            Select the tier that matches your trading ambitions
+            Choose the access level that matches your needs — from full platform control to fully managed exposure
           </p>
         </div>
 
@@ -82,17 +84,22 @@ export default function Pricing() {
         </div>
 
         {/* Built for Professionals */}
-        <div className="mt-20 text-center">
-          <h3 className="text-xl font-semibold text-aurma-text mb-6">
-            Built for Professionals
-          </h3>
+        <div className="mt-20">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-aurma-text mb-4">
+              Built for Professionals
+            </h3>
+            <p className="text-aurma-text-muted">
+              aurma is designed for those who take digital asset markets seriously
+            </p>
+          </div>
           <div className="flex flex-wrap justify-center gap-3">
             {[
               'Professional Traders',
-              'Quant Strategists',
-              'Funds & Family Offices',
-              'High-Net-Worth',
-              'Institutions',
+              'Quantitative & Systematic Strategists',
+              'Crypto Funds & Family Offices',
+              'High-Net-Worth Investors',
+              'Institutions Seeking Digital Asset Exposure',
             ].map((persona, index) => (
               <span
                 key={index}
@@ -116,7 +123,7 @@ interface PricingCardProps {
 function PricingCard({ tier }: PricingCardProps) {
   return (
     <div
-      className={`relative rounded-2xl p-6 transition-all duration-300 ${
+      className={`relative rounded-2xl p-6 lg:p-8 transition-all duration-300 flex flex-col ${
         tier.isPremium
           ? 'bg-aurma-primary border-2 border-aurma-gold/50 shadow-aurma-gold'
           : 'bg-aurma-primary/80 border border-aurma-border/40 hover:border-aurma-gold/30'
@@ -131,17 +138,13 @@ function PricingCard({ tier }: PricingCardProps) {
         </div>
       )}
 
-      <div className="text-center mb-6">
+      <div className="mb-6">
         <h3 className="text-xl font-bold text-aurma-text mb-2">{tier.name}</h3>
+        <p className="text-sm text-aurma-gold font-medium mb-2">{tier.tagline}</p>
         <p className="text-sm text-aurma-text-muted">{tier.description}</p>
       </div>
 
-      <div className="text-center mb-6">
-        <span className="text-4xl font-bold text-aurma-text">{tier.price}</span>
-        <span className="text-aurma-text-muted">{tier.period}</span>
-      </div>
-
-      <ul className="space-y-3 mb-8">
+      <ul className="space-y-3 mb-8 flex-grow">
         {tier.features.map((feature, index) => (
           <li key={index} className="flex items-start gap-3 text-sm text-aurma-text-muted">
             <CheckIcon size={18} className="text-aurma-gold flex-shrink-0 mt-0.5" />
@@ -151,14 +154,15 @@ function PricingCard({ tier }: PricingCardProps) {
       </ul>
 
       <a
-        href="#access"
-        className={`block text-center py-3 rounded-lg font-medium transition-all duration-300 ${
+        href={tier.ctaLink}
+        className={`flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-all duration-300 ${
           tier.isPremium
             ? 'bg-aurma-gold text-aurma-deep hover:bg-aurma-gold-light'
             : 'btn-primary'
         }`}
       >
         {tier.cta}
+        <ArrowRightIcon size={16} />
       </a>
     </div>
   );

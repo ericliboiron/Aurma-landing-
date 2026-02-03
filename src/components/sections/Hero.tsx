@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="container-aurma relative z-10 py-20 px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Copy */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-aurma-secondary/50 border border-aurma-border/40 rounded-full">
               <span className="w-2 h-2 rounded-full bg-aurma-gold animate-pulse" />
@@ -23,20 +23,25 @@ export default function Hero() {
               </span>
             </div>
 
+            {/* Tagline */}
+            <p className="text-lg text-aurma-gold font-medium">
+              Unified market data. Strategy-driven execution. Managed exposure.
+            </p>
+
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-aurma-text leading-tight">
-              See market structure.{' '}
-              <span className="text-gradient-gold">Execute systematically.</span>
+              See the crypto market clearly.{' '}
+              <span className="text-gradient-gold">Act decisively.</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-aurma-text-muted max-w-xl leading-relaxed">
-              aurma unifies real-time market data, on-chain signals, strategy analytics,
-              and automated execution into one professional platform—built for serious capital.
+            <p className="text-lg text-aurma-text-muted max-w-xl leading-relaxed">
+              aurma brings real-time market intelligence, on-chain analytics, strategy engineering,
+              and automated execution into one professional trading platform — built for serious capital.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <a href="#access" className="btn-primary text-center">
                 Request Access
               </a>
